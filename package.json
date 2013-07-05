@@ -1,6 +1,6 @@
 {
   "name": "json-ometajs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A JSON parser using OmetaJS",
   "main": "index.js",
   "scripts": {

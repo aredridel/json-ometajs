@@ -1,9 +1,10 @@
 {
   "name": "json-ometajs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A JSON parser using OmetaJS",
   "main": "index.js",
   "scripts": {
+    "prepublish": "ometajs2js -i index.ometajs -o index.js",
     "test": "tap ./test"
   },
   "repository": {
@@ -19,10 +20,8 @@
   "bugs": {
     "url": "https://github.com/aredridel/json-ometajs/issues"
   },
-  "dependencies": {
-    "ometajs": "~3.2.4"
-  },
   "devDependencies": {
-    "tap": "~0.4.3"
+    "tap": "~0.4.3",
+    "ometajs": "~3.2.4"
   }
 }

@@ -16,7 +16,7 @@
     "ometajs"
   ],
   "author": "Aria Stewart <aredridel@nbtsc.org>",
-  "license": "BSD",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/aredridel/json-ometajs/issues"
   },

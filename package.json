@@ -4,7 +4,7 @@
   "description": "A JSON parser using OmetaJS",
   "main": "index.js",
   "scripts": {
-    "prepublish": "ometajs2js -i index.ometajs -o index.js",
+    "prepublish": "ometajs2js -b -i index.ometajs -o index.js",
     "test": "tap ./test"
   },
   "repository": {

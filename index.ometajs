@@ -9,7 +9,7 @@ ometa JSON {
             }, {})
         | "{" "}" -> new Object(),
 
-    pair = string:s ":" value:a -> [s, a],
+    pair = @spaces? string:s @spaces? ":" value:a -> [s, a],
 
     array = "[" value:l (",", value)*:r "]" -> { r ? [l].concat(r) : [l] }
         | "[" "]" -> [],

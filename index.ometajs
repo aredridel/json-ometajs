@@ -1,7 +1,7 @@
 ometa JSON {
-    root = value:a @spaces? end -> a,
+    root = value:a end -> a,
 
-    value = object | array | string | number | boolean,
+    value = @spaces? (object | array | string | number | boolean):v @spaces? -> v,
 
     object = "{" pair:l ( "," pair:p { p } )*:r "}" -> [l].concat(r).reduce(function (acc, e) {
                 if (e) acc[e[0]] = e[1];

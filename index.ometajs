@@ -20,7 +20,7 @@ ometa JSON {
 
     escape = '\\' (
         '"' | '\'' | '\\' | '/' | 'b' -> '\b' | 'f' -> '\f' | 'n' -> '\n' | 'r' -> '\r' |
-        't' -> '\t' | 'u' <digit digit digit digit>:s -> String.charCodeAt(parseInt(s, 16)) | char
+        't' -> '\t' | 'u' <digit digit digit digit>:s -> String.fromCharCode(parseInt(s, 16)) | char
     ),
 
     number = @space? </\+|-/? digit+ ('.' digit+)?>:n -> parseFloat(n),

@@ -7,7 +7,7 @@ ometa JSON {
                 if (e) acc[e[0]] = e[1];
                 return acc;
             }, {})
-        | "{" "}" -> {},
+        | "{" "}" -> new Object(),
 
     pair = string:s ":" value:a -> [s, a],
 

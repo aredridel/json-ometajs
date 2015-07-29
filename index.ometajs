@@ -11,8 +11,8 @@ ometa JSON {
 
     pair = @spaces? string:s @spaces? ":" value:a -> [s, a],
 
-    array = "[" value:l (",", value)*:r "]" -> { r ? [l].concat(r) : [l] }
-        | "[" "]" -> [],
+    array = "[" value:l ("," value)*:r "]" -> { r ? [l].concat(r) : [l] }
+        | "[" @spaces? "]" -> [],
 
     string = "\"" <(~'"' character)*>:s "\"" -> s,
 

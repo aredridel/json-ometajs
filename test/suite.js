@@ -9,11 +9,12 @@ var util = require('util');
 glob.sync(path.join(__dirname, 'cases/*.json')).forEach(function (n) {
     test(path.relative(path.resolve(__dirname, '..'), n), function (t) {
         try {
-            var val = json.parse(fs.readFileSync(n, 'utf-8'));
+            var src = fs.readFileSync(n, 'utf-8');
+            var val = json.parse(src);
             if (/fail/.test(n)) {
                 t.fail(util.format('parse should have failed, got %j', val));
             } else {
-                t.pass();
+                t.deepEqual(val, JSON.parse(src));
             }
         } catch (e) {
             if (/fail/.test(n)) {

@@ -26,11 +26,18 @@ ometa JSON {
         { this._getError() }
     ),
 
-    number = @spaces? <simple_number exp?>:n -> parseFloat(n),
+    hex = /[0-9A-Fa-f]/,
 
-    simple_number = /\+|-/? digit+ ('.' digit+)?,
+    number = float | int,
 
-    exp = /[Ee]/ simple_number,
+    float = <sign? digit+ ('.' digit* exp? | exp)>:n -> parseFloat(n),
+
+    int = <sign? /[1-9]/ digit*>:n -> parseInt(n, 10)
+        | '0',
+
+    sign = /\+|-/,
+
+    exp = /[Ee]/ sign? digit+,
 
     boolean = "true" -> true | "false" -> false | "null" -> null,
 

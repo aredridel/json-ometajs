@@ -16,7 +16,7 @@ ometa JSON {
 
     string = "\"" <(~'"' character)*>:s "\"" -> s,
 
-    character = escape | char,
+    character = escape | <~/[\t\n\r\f\v]/ char>,
 
     escape = '\\' (
         '"' | '\'' | '\\' | '/' | 'b' -> '\b' | 'f' -> '\f' | 'n' -> '\n' | 'r' -> '\r'

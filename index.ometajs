@@ -23,7 +23,11 @@ ometa JSON {
         't' -> '\t' | 'u' <digit digit digit digit>:s -> String.fromCharCode(parseInt(s, 16)) | char
     ),
 
-    number = @space? </\+|-/? digit+ ('.' digit+)?>:n -> parseFloat(n),
+    number = @spaces? <simple_number exp?>:n -> parseFloat(n),
+
+    simple_number = /\+|-/? digit+ ('.' digit+)?,
+
+    exp = /[Ee]/ simple_number,
 
     boolean = "true" -> true | "false" -> false | "null" -> null,
 

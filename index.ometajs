@@ -3,10 +3,10 @@ ometa JSON {
 
     value = @spaces? (object | array | string | number | boolean):v @spaces? -> v,
 
-    object = "{" pair:l ( "," pair:p { p } )*:r "}" -> [l].concat(r).reduce(function (acc, e) {
-                if (e) acc[e[0]] = e[1];
-                return acc;
-            }, {})
+    object = "{" pair:l ( "," pair )*:r "}" -> [l].concat(r).reduce(function (acc, e) {
+            acc[e[0]] = e[1];
+            return acc;
+        }, {})
         | "{" "}" -> new Object(),
 
     pair = @spaces? string:s @spaces? ":" value:a -> [s, a],

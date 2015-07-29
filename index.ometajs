@@ -19,8 +19,11 @@ ometa JSON {
     character = escape | char,
 
     escape = '\\' (
-        '"' | '\'' | '\\' | '/' | 'b' -> '\b' | 'f' -> '\f' | 'n' -> '\n' | 'r' -> '\r' |
-        't' -> '\t' | 'u' <digit digit digit digit>:s -> String.fromCharCode(parseInt(s, 16)) | char
+        '"' | '\'' | '\\' | '/' | 'b' -> '\b' | 'f' -> '\f' | 'n' -> '\n' | 'r' -> '\r'
+        | 't' -> '\t'
+        | '\\'
+        | 'u' <hex hex hex hex>:s -> String.fromCharCode(parseInt(s, 16)) |
+        { this._getError() }
     ),
 
     number = @spaces? <simple_number exp?>:n -> parseFloat(n),

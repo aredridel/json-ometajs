@@ -14,17 +14,20 @@ ometa JSON {
     array = "[" value:l ("," value)*:r "]" -> { r ? [l].concat(r) : [l] }
         | "[" @spaces? "]" -> [],
 
-    string = "\"" <(~'"' character)*>:s "\"" -> s,
+    string = "\"" (~'"' character)*:s "\"" -> s.join(''),
 
     character = escape | <~/[\t\n\r\f\v]/ char>,
 
     escape = '\\' (
-        '"' | '\'' | '\\' | '/' | 'b' -> '\b' | 'f' -> '\f' | 'n' -> '\n' | 'r' -> '\r'
+        '"' | '\'' | '\\' | '/'
+        | 'b' -> '\b'
+        | 'f' -> '\f'
+        | 'n' -> '\n'
+        | 'r' -> '\r'
         | 't' -> '\t'
-        | '\\'
         | 'u' <hex hex hex hex>:s -> String.fromCharCode(parseInt(s, 16)) |
         { this._getError() }
-    ),
+    ):v -> v,
 
     hex = /[0-9A-Fa-f]/,
 

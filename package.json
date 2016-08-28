@@ -24,7 +24,7 @@
     "ometajs": "^4.0.0"
   },
   "devDependencies": {
-    "glob": "^5.0.14",
+    "glob": "^7.0.6",
     "tap": "^7.0.0"
   }
 }
